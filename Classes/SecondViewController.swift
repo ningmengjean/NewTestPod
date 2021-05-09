@@ -8,6 +8,10 @@
 import UIKit
 
 class SecondViewController: UIViewController {
+    
+    static func instantiate() -> SecondViewController {
+        return SecondViewController(nibName: "SecondViewController", bundle: Bundle(for: SecondViewController.self))
+    }
 
 	@IBOutlet weak var tableView: UITableView! {
 		didSet {
@@ -16,7 +20,7 @@ class SecondViewController: UIViewController {
 		}
 	}
 	
-	public var nums = [Int]()
+	public var nums = [1,2,3]
 	override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +36,4 @@ extension SecondViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		return UITableViewCell()
 	}
-	
-	
 }

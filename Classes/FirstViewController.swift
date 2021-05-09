@@ -12,6 +12,12 @@ protocol FirstViewControllerDelegate: class {
 }
 
 public class FirstViewController: UIViewController {
+    
+    static public func instantiate() -> FirstViewController {
+        let storyboard = UIStoryboard(name: "MainStoryboard", bundle: Bundle(for: FirstViewController.self))
+        let vc = storyboard.instantiateInitialViewController() as! FirstViewController
+        return vc
+    }
 	
 	weak var delegate: FirstViewControllerDelegate?
 
@@ -21,13 +27,8 @@ public class FirstViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 	@IBAction func toSecondViewController(_ sender: UIButton) {
-		let vc = SecondViewController()
-		guard let nums = delegate?.getNums() else {
-			return
-		}
-		vc.nums = nums
+        let vc = SecondViewController.instantiate()
 		self.present(vc, animated: true)
 	}
-	
 
 }
